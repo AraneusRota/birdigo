@@ -29,8 +29,8 @@ lazy val mygame =
       showCursor          := true,
       title               := "Birdigo",
       gameAssetsDirectory := "assets",
-      windowStartWidth    := 550,
-      windowStartHeight   := 400,
+      windowStartWidth    := 640,
+      windowStartHeight   := 640,
       libraryDependencies ++= Seq(
         "io.indigoengine" %%% "indigo-json-circe" % "0.12.1",
         "io.indigoengine" %%% "indigo"            % "0.12.1",
