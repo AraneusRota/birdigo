@@ -9,6 +9,6 @@ object BirdView:
   def apply(bird: Bird): SceneNode =
     Graphic(
       Rectangle(View.size(bird.boundingBox.size)),
-      Material.Bitmap(GameAssets.bird)
+      Material.Bitmap(if bird.ySpeed < 14 then GameAssets.bird.rise else GameAssets.bird.fall)
     )
       .moveTo(View.point(bird.boundingBox.position))

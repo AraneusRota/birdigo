@@ -5,7 +5,12 @@ import indigo.{AssetPath, *}
 object GameAssets:
   import violetempiregames.init.FontAssets._
 
-  val bird: AssetName = AssetName("bird")
+  object Bird:
+    val faceless: AssetName = AssetName("bird_faceless")
+    val fall: AssetName = AssetName("bird_fall")
+    val rise: AssetName = AssetName("bird_rise")
+  val bird: Bird.type = Bird
+
   val background: AssetName = AssetName("background")
 
   object Obstacle:
@@ -15,7 +20,9 @@ object GameAssets:
 
   val assets: Set[AssetType] = Set(
     AssetType.Image(fontName, assetPath("boxy_font.png")),
-    AssetType.Image(bird, assetPath("bird.png")),
+    AssetType.Image(bird.faceless, assetPath("bird/faceless.png")),
+    AssetType.Image(bird.fall, assetPath("bird/fall.png")),
+    AssetType.Image(bird.rise, assetPath("bird/rise.png")),
     AssetType.Image(obstacle.mid, assetPath("obstacle/mid.png")),
     AssetType.Image(obstacle.end, assetPath("obstacle/end.png")),
     AssetType.Image(background, assetPath("background.png")),
