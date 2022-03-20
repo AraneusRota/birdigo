@@ -6,12 +6,19 @@ object GameAssets:
   import violetempiregames.init.FontAssets._
 
   val bird: AssetName = AssetName("bird")
-  
+
+  object Obstacle:
+    val mid: AssetName = AssetName("obstacle_mid")
+    val end: AssetName = AssetName("obstacle_end")
+  val obstacle: Obstacle.type = Obstacle
+
   val assets: Set[AssetType] = Set(
     AssetType.Image(fontName, assetPath("boxy_font.png")),
-    AssetType.Image(bird, assetPath("bird.png"))
+    AssetType.Image(bird, assetPath("bird.png")),
+    AssetType.Image(obstacle.mid, assetPath("obstacle/mid.png")),
+    AssetType.Image(obstacle.end, assetPath("obstacle/end.png")),
   )
-  
+
   def assetPath(pathWithoutPrefix: String): AssetPath = AssetPath("assets/" + pathWithoutPrefix)
 
 end GameAssets
