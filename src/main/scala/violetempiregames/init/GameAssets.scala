@@ -6,6 +6,7 @@ object GameAssets:
   import violetempiregames.init.FontAssets._
 
   val bird: AssetName = AssetName("bird")
+  val background: AssetName = AssetName("background")
 
   object Obstacle:
     val mid: AssetName = AssetName("obstacle_mid")
@@ -17,6 +18,7 @@ object GameAssets:
     AssetType.Image(bird, assetPath("bird.png")),
     AssetType.Image(obstacle.mid, assetPath("obstacle/mid.png")),
     AssetType.Image(obstacle.end, assetPath("obstacle/end.png")),
+    AssetType.Image(background, assetPath("background.png")),
   )
 
   def assetPath(pathWithoutPrefix: String): AssetPath = AssetPath("assets/" + pathWithoutPrefix)

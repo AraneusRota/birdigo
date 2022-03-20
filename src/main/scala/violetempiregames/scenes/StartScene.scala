@@ -6,7 +6,7 @@ import indigo.scenes.SceneEvent.JumpTo
 import indigo.shared.events.KeyboardEvent.KeyDown
 import violetempiregames.Model
 import violetempiregames.init.{FontAssets, ViewConfig}
-import violetempiregames.scenes.view.ScoreView
+import violetempiregames.scenes.view.{BackgroundView, ScoreView}
 
 object StartScene extends Scene[Unit, Model, Unit] :
 
@@ -51,6 +51,14 @@ object StartScene extends Scene[Unit, Model, Unit] :
     Outcome(
       SceneUpdateFragment(
         ScoreView.apply(model),
-        Text("Space!", ViewConfig.default.horizontalCenter, ViewConfig.default.verticalMiddle, 1, FontAssets.fontKey, FontAssets.fontMaterial).alignCenter
+        Text(
+          "Space!",
+          ViewConfig.default.horizontalCenter,
+          ViewConfig.default.verticalMiddle,
+          1,
+          FontAssets.fontKey,
+          FontAssets.fontMaterial
+        ).alignCenter,
+        BackgroundView()
       ),
     )
