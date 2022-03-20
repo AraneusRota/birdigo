@@ -32,7 +32,7 @@ object StartScene extends Scene[Unit, Model, Unit] :
                    context: FrameContext[Unit],
                    model: Int
                  ): GlobalEvent => Outcome[Int] =
-    case KeyDown(Key.SPACE) => Outcome(model).addGlobalEvents(SceneEvent.Next)
+    case KeyDown(Key.SPACE) | MouseEvent.Click(_) => Outcome(model).addGlobalEvents(SceneEvent.Next)
     case _ => Outcome(model)
 
 

@@ -14,7 +14,7 @@ final case class Bird(boundingBox: BoundingBox, ySpeed: Double):
     val gravity = 35d
     val jumpVelocity = -12d
     val newYSpeed =
-      if inputState.keyboard.keysAreDown(Key.SPACE) then
+      if inputState.mouse.mouseClicked || inputState.keyboard.keysAreDown(Key.SPACE) then
         jumpVelocity
       else
         gravity * gameTime.delta.toDouble + ySpeed
