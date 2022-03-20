@@ -61,11 +61,30 @@ lazy val mygame =
       commandColor     := scala.Console.CYAN,
       descriptionColor := scala.Console.WHITE
     )
+    .enablePlugins(GhpagesPlugin) // Website stuff
+    .settings(
+      siteSourceDirectory      := target.value / "indigoBuildFull",
+      makeSite / includeFilter := "*",
+      makeSite / excludeFilter := ".DS_Store",
+      git.remoteRepo           := "git@github.com:araneusrota/birdigo.git",
+      ghpagesNoJekyll          := true
+    )
+
+
 
 addCommandAlias("buildGame", ";compile;fastOptJS;indigoBuild")
 addCommandAlias("buildGameFull", ";compile;fullOptJS;indigoBuildFull")
 addCommandAlias("runGame", ";compile;fastOptJS;indigoRun")
 addCommandAlias("runGameFull", ";compile;fullOptJS;indigoRunFull")
+
+addCommandAlias(
+  "publishGame",
+  List(
+    "buildGameFull",
+    "makeSite",
+    "ghpagesPushSite"
+  ).mkString(";", ";", "")
+)
 
 lazy val code =
   taskKey[Unit]("Launch VSCode in the current directory")
