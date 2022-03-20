@@ -1,11 +1,14 @@
 package violetempiregames.scenes.view
 
-import indigo._
+import indigo.*
 import indigo.shared.scenegraph.{SceneUpdateFragment, Shape}
+import violetempiregames.init.GameAssets
 import violetempiregames.scenes.model.Bird
 
 object BirdView:
-  def apply(bird: Bird): Shape.Box = Shape.Box(
-    View.fromBoundingBox(bird.boundingBox),
-    Fill.LinearGradient(Point(0), RGBA.Magenta, Point(45), RGBA.Cyan)
-  )
+  def apply(bird: Bird): SceneNode =
+    Graphic(
+      Rectangle(View.size(bird.boundingBox.size)),
+      Material.Bitmap(GameAssets.bird)
+    )
+      .moveTo(View.point(bird.boundingBox.position))

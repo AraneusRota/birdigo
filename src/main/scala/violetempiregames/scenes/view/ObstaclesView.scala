@@ -9,11 +9,12 @@ object ObstaclesView:
     val fill = Fill.LinearGradient(Point(0), RGBA.Green, Point(45), RGBA.Teal)
 
     def box(obstacle: BoundingBox): Shape.Box = Shape.Box(
-        View.fromBoundingBox(obstacle),
-        fill
-      )
+      View.rectangle(obstacle),
+      fill
+    )
 
-    obstacles.flatMap { obstacle => List(
+    obstacles.flatMap { obstacle =>
+      List(
         box(obstacle.top),
         box(obstacle.bottom)
       )

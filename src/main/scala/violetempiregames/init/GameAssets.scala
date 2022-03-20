@@ -5,12 +5,18 @@ import indigo.{AssetPath, *}
 object GameAssets:
   import violetempiregames.init.FontAssets._
 
+  val bird: AssetName = AssetName("bird")
+  
+  val assets: Set[AssetType] = Set(
+    AssetType.Image(fontName, assetPath("boxy_font.png")),
+    AssetType.Image(bird, assetPath("bird.png"))
+  )
+  
   def assetPath(pathWithoutPrefix: String): AssetPath = AssetPath("assets/" + pathWithoutPrefix)
 
-  val assets: Set[AssetType] = Set(AssetType.Image(fontName, assetPath("boxy_font.png")))
 end GameAssets
 
-object FontAssets {
+object FontAssets:
     val fontName: AssetName = AssetName("Boxy font")
 
     def fontKey: FontKey = FontKey("My Font")
@@ -61,4 +67,3 @@ object FontAssets {
         .addChar(FontChar(".", 286, 0, 15, 23))
         .addChar(FontChar(",", 248, 0, 15, 23))
         .addChar(FontChar(" ", 145, 52, 23, 23))
-}

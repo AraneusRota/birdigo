@@ -1,6 +1,6 @@
 package violetempiregames.scenes.view
 
-import indigo.shared.datatypes.Rectangle
+import indigo.shared.datatypes.{Point, Rectangle, Size}
 import indigoextras.geometry.{BoundingBox, Vertex}
 import violetempiregames.init.ViewConfig
 import violetempiregames.scenes.model.PlayArea
@@ -10,12 +10,15 @@ object View:
   private val horizontalScale = viewport.width / PlayArea.width
   private val verticalScale = viewport.height / PlayArea.height
 
-  def fromBoundingBox(boundingBox: BoundingBox): Rectangle =
-    def scale(vertex: Vertex) = Vertex(fromX(vertex.x), fromY(vertex.y))
-
+  def rectangle(boundingBox: BoundingBox): Rectangle =
+    def scale(vertex: Vertex) = Vertex(x(vertex.x), y(vertex.y))
+    
     BoundingBox(scale(boundingBox.size))
       .moveTo(scale(boundingBox.position))
       .toRectangle
-
-  def fromX(x: Double): Int = (x * horizontalScale).round.toInt
-  def fromY(y: Double): Int = (y * verticalScale).round.toInt
+  
+  def point(vertex: Vertex): Point = Point(x(vertex.x), y(vertex.y))
+  def size(vertex: Vertex): Size = Size(x(vertex.x), y(vertex.y))
+  
+  def x(x: Double): Int = (x * horizontalScale).round.toInt
+  def y(y: Double): Int = (y * verticalScale).round.toInt
