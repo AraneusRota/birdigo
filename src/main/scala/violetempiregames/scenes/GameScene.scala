@@ -33,12 +33,18 @@ object GameScene extends Scene[Unit, Model, Unit] :
                    model: Model
                  ): GlobalEvent => Outcome[Model] = _ =>
     val updatedObstacles = model.obstacles.map(_.update(context.gameTime)).filter(_.isDefined).flatten
+
     val (nonEmptyUpdatedObstacles, updatedScore) =
       if updatedObstacles.isEmpty then
-        (List(Obstacle.randomInitial(context.dice)), model.score + 1)
+        if model.score == 0 then
+          (List(Obstacle.withRandomGapFarRight(context.dice)), model.score + 1)
+        else
+          (List(Obstacle.withRandomGap(context.dice)), model.score + 1)
       else
         (updatedObstacles, model.score)
+
     val updatedHighScore = if updatedScore > model.highScore then updatedScore else model.highScore
+
     model.bird.update(context.gameTime, context.inputState, model.obstacles) match
       case Some(updatedBird) =>
         Outcome(Model(updatedBird, nonEmptyUpdatedObstacles, updatedScore, updatedHighScore))
