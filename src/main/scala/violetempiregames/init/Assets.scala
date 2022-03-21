@@ -97,3 +97,6 @@ object FontAssets:
         .addChar(FontChar(".", 286, 0, 15, 23))
         .addChar(FontChar(",", 248, 0, 15, 23))
         .addChar(FontChar(" ", 145, 52, 23, 23))
+        .addChar(FontChar(":", 3, 52, 15, 23))
+        .addChar(FontChar("-", 268, 0, 15, 23))
+

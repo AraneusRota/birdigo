@@ -50,7 +50,7 @@ object StartScene extends Scene[Unit, Model, Unit] :
              ): Outcome[SceneUpdateFragment] =
     Outcome(
       SceneUpdateFragment(
-        ScoreView.apply(model),
+        ScoreView.highScore(model),
         Text(
           "Space!",
           ViewConfig.default.horizontalCenter,

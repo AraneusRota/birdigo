@@ -69,7 +69,7 @@ object GameScene extends Scene[Unit, Model, Unit] :
       SceneUpdateFragment(
         ObstaclesView(model.obstacles)
           .appended(birdView.graphic)
-          .appended(ScoreView(model.score))
+          .appended(ScoreView.normal(model.score))
           .appended(BackgroundView())
       )
         .withLights(
