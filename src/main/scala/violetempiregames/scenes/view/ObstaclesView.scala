@@ -7,8 +7,6 @@ import violetempiregames.scenes.model.Obstacle
 
 object ObstaclesView:
   def apply(obstacles: List[Obstacle]): List[SceneNode] =
-    val fill = Fill.LinearGradient(Point(0), RGBA.Green, Point(45), RGBA.Teal)
-
     def toGraphic(obstacle: BoundingBox) =
       Graphic(
         View.size(obstacle.size),
