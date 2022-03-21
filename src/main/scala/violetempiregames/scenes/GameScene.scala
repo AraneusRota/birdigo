@@ -4,7 +4,7 @@ import indigo.*
 import indigo.scenes.*
 import indigo.shared.events.KeyboardEvent.KeyDown
 import violetempiregames.Model
-import violetempiregames.init.{GameAssets, ViewConfig}
+import violetempiregames.init.{Assets, ViewConfig}
 import violetempiregames.scenes.model.{Bird, Obstacle}
 import violetempiregames.scenes.view.{BackgroundView, BirdView, ObstaclesView, ScoreView, View}
 
@@ -64,11 +64,16 @@ object GameScene extends Scene[Unit, Model, Unit] :
     model: Model,
     viewModel: Unit
   ): Outcome[SceneUpdateFragment] =
+    val birdView = BirdView(model.bird)
     Outcome(
       SceneUpdateFragment(
         ObstaclesView(model.obstacles)
-          .appended(BirdView(model.bird))
+          .appended(birdView.graphic)
           .appended(ScoreView(model.score))
           .appended(BackgroundView())
       )
+        .withLights(
+          birdView.light,
+          AmbientLight(RGBA.White.withAmount(0.1))
+        )
     )

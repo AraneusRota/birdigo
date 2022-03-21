@@ -2,7 +2,7 @@ package violetempiregames
 
 import indigo.*
 import indigo.scenes.*
-import violetempiregames.init.{FontAssets, GameAssets, ViewConfig}
+import violetempiregames.init.{FontAssets, Assets, ViewConfig}
 import violetempiregames.scenes.model.Bird
 import violetempiregames.scenes.{GameScene, StartScene}
 
@@ -27,7 +27,7 @@ object Birdigo extends IndigoGame[Unit, Unit, Model, Unit]:
           .withViewport(ViewConfig.default.viewport)
           .withMagnification(ViewConfig.default.magnificationLevel)
       )
-        .withAssets(GameAssets.assets)
+        .withAssets(Assets.assets)
         .withFonts(FontAssets.fontInfo)
     )
 

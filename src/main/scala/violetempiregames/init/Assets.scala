@@ -2,7 +2,7 @@ package violetempiregames.init
 
 import indigo.{AssetPath, *}
 
-object GameAssets:
+object Assets:
   import violetempiregames.init.FontAssets._
 
   object Bird:
@@ -11,26 +11,40 @@ object GameAssets:
     val rise: AssetName = AssetName("bird_rise")
   val bird: Bird.type = Bird
 
-  val background: AssetName = AssetName("background")
+  object Background:
+    val albedo: AssetName = AssetName("background_albedo")
+    val emission: AssetName = AssetName("background_emission")
+    val normal: AssetName = AssetName("background_normal")
+  val background: Background.type = Background
 
   object Obstacle:
-    val mid: AssetName = AssetName("obstacle_mid")
+    object Mid:
+      val albedo: AssetName = AssetName("obstacle_mid_albedo")
+      val emission: AssetName = AssetName("obstacle_mid_emission")
+      val normal: AssetName = AssetName("obstacle_mid_normal")
+    val mid: Mid.type = Mid
+
     val end: AssetName = AssetName("obstacle_end")
   val obstacle: Obstacle.type = Obstacle
 
   val assets: Set[AssetType] = Set(
-    AssetType.Image(fontName, assetPath("boxy_font.png")),
-    AssetType.Image(bird.faceless, assetPath("bird/faceless.png")),
-    AssetType.Image(bird.fall, assetPath("bird/fall.png")),
-    AssetType.Image(bird.rise, assetPath("bird/rise.png")),
-    AssetType.Image(obstacle.mid, assetPath("obstacle/mid.png")),
-    AssetType.Image(obstacle.end, assetPath("obstacle/end.png")),
-    AssetType.Image(background, assetPath("background.png")),
+    AssetType.Image(fontName, assetPathPng("boxy_font")),
+    AssetType.Image(bird.faceless, assetPathPng("bird/faceless")),
+    AssetType.Image(bird.fall, assetPathPng("bird/fall")),
+    AssetType.Image(bird.rise, assetPathPng("bird/rise")),
+    AssetType.Image(obstacle.mid.albedo, assetPathPng("obstacle/mid/albedo")),
+    AssetType.Image(obstacle.mid.emission, assetPathPng("obstacle/mid/emission")),
+    AssetType.Image(obstacle.mid.normal, assetPathPng("obstacle/mid/normal")),
+    AssetType.Image(obstacle.end, assetPathPng("obstacle/end")),
+    AssetType.Image(background.albedo, assetPathPng("background/albedo_gray")),
+    AssetType.Image(background.emission, assetPathPng("background/emission")),
+    AssetType.Image(background.normal, assetPathPng("background/normal")),
   )
 
   def assetPath(pathWithoutPrefix: String): AssetPath = AssetPath("assets/" + pathWithoutPrefix)
-
-end GameAssets
+  def assetPathPng(pathWithoutPrefixAndExtension: String): AssetPath =
+    AssetPath("assets/" + pathWithoutPrefixAndExtension + ".png")
+end Assets
 
 object FontAssets:
     val fontName: AssetName = AssetName("Boxy font")
