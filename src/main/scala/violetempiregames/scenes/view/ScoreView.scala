@@ -8,7 +8,8 @@ object ScoreView:
   def apply(score: Int): SceneNode = Text(
     s"$score",
     View.x(PlayArea.horizontalCenter),
-    View.y(PlayArea.top + 4), 1,
+    View.y(PlayArea.top + 3),
+    1,
     FontAssets.fontKey,
     FontAssets.fontMaterial
   )
