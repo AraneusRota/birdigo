@@ -18,6 +18,7 @@ object ObstaclesView:
             Assets.obstacle.mid.emission,
             Assets.obstacle.mid.normal
           )
+            .withNormalAmount(1.5)
         ).tile
       )
         .moveTo(View.point(obstacle.position))
