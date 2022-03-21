@@ -9,7 +9,7 @@ final case class Obstacle(top: BoundingBox, bottom: BoundingBox):
    * Some if in bounds, None if out of bounds
    */
   def update(gameTime: GameTime): Option[Obstacle] =
-    val velocity = -10
+    val velocity = -9
     val moved = moveHorizontallyBy(velocity * gameTime.delta.toDouble)
     if moved.top.right > 0 then Some(moved) else None
 
