@@ -17,7 +17,6 @@ object BirdView:
         .moveTo(View.point(bird.boundingBox.position))
     val light = PointLight.default
       .withColor(RGBA.Orange.mix(RGBA.White, 0.05))
-      .withIntensity(100)
-      .withFalloff(Falloff.Linear(0, 350))
+      .withFalloff(Falloff.SmoothQuadratic(0, 350))
       .moveTo(graphic.bounds.center)
     BirdView(graphic, light)
